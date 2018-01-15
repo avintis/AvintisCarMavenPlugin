@@ -36,9 +36,14 @@ public class CARCreator extends AbstractMojo
 
 		// using ALL files copied by the maven source plugin
 		ArrayList<File> files = new ArrayList<File>();
-		for (File file : carFolder.listFiles())
+		
+		//carfolder only exists if the project contains at least one config file
+		if(carFolder.exists())
 		{
-			files.add(file);
+			for (File file : carFolder.listFiles())
+			{
+				files.add(file);
+			}
 		}
 
 		// includeMediators is a config property from the AvintisCarMavenPlugin
